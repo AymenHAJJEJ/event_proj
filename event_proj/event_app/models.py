@@ -3,7 +3,7 @@ from log_reg_app.models import User
 
 
 class EventManager(models.Manager):
-    def basic_validator(self, post_data):
+    def event_validator(self, post_data):
         errors = {}
         if len(post_data['title']) < 3:
             errors['title'] = 'Title should be at least 3 characters'
@@ -12,7 +12,7 @@ class EventManager(models.Manager):
         if len(post_data['location']) < 3:
             errors['location'] = 'Location should be at least 3 characters'
         if (post_data['scheduled']) == "":
-            errors['scheduled'] = 'Please enter a date'
+            errors['scheduled'] = 'Please enter a date and time'
         if (post_data['latitude']) == "":
             errors['latitude'] = 'Please enter a Latitude'
         if (post_data['longitude']) == "":

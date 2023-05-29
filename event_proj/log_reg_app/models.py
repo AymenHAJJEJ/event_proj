@@ -1,11 +1,12 @@
 from django.db import models
 import re
+import bcrypt
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 
 class UserManager(models.Manager):
-    def basic_validator(self, post_data):
+    def register_validator(self, post_data):
         errors = {}
         if len(post_data['first_name']) < 2:
             errors['first_name'] = 'First Name should be at least 2 characters'
@@ -21,6 +22,20 @@ class UserManager(models.Manager):
         if post_data['password'] != post_data['confirm_password']:
             errors['confirm_password'] = 'Passwords must match'
         return errors
+    
+    def login_validator(self, post_data):
+        errors = {}
+        user = User.objects.filter(email = post_data['email'])
+        if not EMAIL_REGEX.match(post_data['email']):
+            errors['email'] = 'Invalid login!'
+        if not user:
+            errors['email'] = 'User not found!'
+        else:
+            user = user[0]
+            if not bcrypt.checkpw(post_data['password'].encode(), user.password.encode()):
+                errors['password'] = 'Invalid login!'
+        return errors
+
 
 
 class User(models.Model):
