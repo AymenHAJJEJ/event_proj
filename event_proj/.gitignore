@@ -5,3 +5,4 @@ event_proj/settings.py
 *.pyo
 __pycache__/
 venv/
+event_app/static/
