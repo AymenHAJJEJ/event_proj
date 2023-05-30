@@ -1,0 +1,18 @@
+.form-container {
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.event-container {
+    background-color: white;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+

@@ -11,12 +11,12 @@ class EventManager(models.Manager):
             errors['description'] = 'Description should be at least 3 characters'
         if len(post_data['location']) < 3:
             errors['location'] = 'Location should be at least 3 characters'
-        if (post_data['scheduled']) == "":
-            errors['scheduled'] = 'Please enter a date and time'
         if (post_data['latitude']) == "":
             errors['latitude'] = 'Please enter a Latitude'
         if (post_data['longitude']) == "":
             errors['longitude'] = 'Please enter a Longitude'
+        if (post_data['scheduled']) == "":
+            errors['scheduled'] = 'Please enter a date and time'
         return errors
 
 

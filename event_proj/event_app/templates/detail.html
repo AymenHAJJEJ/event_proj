@@ -10,26 +10,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         #map {
-            width: 50%;
-            height: 300px;
+            width: 400px;
+            height: 400px;
         }
     </style>
-    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>{{event.title}}</title>
 </head>
 <body>
-    <div class="container">
-        <div>
-            <h1>{{event.title}}</h1>
+    <div class="container bg-black rounded p-4">
+        <div class="event-container">
+            <h1 class="fw-bold mb-4">{{event.title}}</h1>
             <p>{{event.description}}</p>
-            <p>Created By {{event.user.first_name}} {{event.user.last_name}}</p>
+            <p>Created By <span class="fw-bold">{{event.user.first_name}} {{event.user.last_name}}</span></p>
             <p>Meet at <span class="fw-bold">{{event.location}}</span> -- {{event.scheduled}}</p>
+            {% if user.id == event.user.id %}
+                <a href="/events/{{event.id}}/edit">Re-schedule</a>&nbsp;&nbsp;
+                <a href="/events/{{event.id}}/delete">Cancel Event</a>&nbsp;&nbsp;
+                <a href="/events/dashboard">Back</a>
+            {% else %}
+                <a href="/events/dashboard">Back</a>
+            {% endif %}
         </div>
-        {% if user.id == event.user.id %}
-            <a href="/events/{{event.id}}/edit">Re-schedule</a>
-            <a href="/events/{{event.id}}/delete">Cancel Event</a>
-        {% else %}
-            <a href="/events/dashboard">Back</a>
-        {% endif %}
         <div id="map"></div>
     </div>
     <script>
