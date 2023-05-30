@@ -1,2 +1,2 @@
 # event_proj
-This is a django project about event planning
+This is a website of event planning, you can plan, invite, and RSVP to your favorite events online.
