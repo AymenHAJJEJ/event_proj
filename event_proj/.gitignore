@@ -1,8 +1,0 @@
-*.sqlite3
-event_proj/settings.py
-*.log
-*.pyc
-*.pyo
-__pycache__/
-venv/
-event_app/static/
