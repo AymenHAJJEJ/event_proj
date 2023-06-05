@@ -1,3 +1,2 @@
 # event_proj
-This is a website of event planning.
-You can plan, invite, and RSVP to your favorite events online.
+Event Planner is a comprehensive web application built on the Django framework, designed to simplify the process of organizing and managing events. Whether you're planning a small gathering, a corporate conference, or a large-scale festival, Event Planner offers a user-friendly platform to streamline your event management tasks.
